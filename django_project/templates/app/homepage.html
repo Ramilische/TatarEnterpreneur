@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+<!--
+        Главная страница
+-->
+{% block content %}
+
+<body>
+    <div class="container">
+        <h1>Каталог татарских предприятий</h1>
+        <div class="enterprise-list">
+            <!-- Блок предприятия -->
+            {% for comp in companies %}
+            <div class="enterprise-card">
+                <h2>{{ comp.name }}</h2>
+                <p><strong>ФИО предпринимателя:</strong> {{ comp.enterpreneur.name }}</p>
+                <p><strong>Сфера деятельности:</strong> {{ comp.field }}</p>
+                <a href="{{ comp.twogislink }}"  target="_blank"> Страница в 2ГИС</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+<div class="pop-up">
+
+</div>
+
+{% endblock %}

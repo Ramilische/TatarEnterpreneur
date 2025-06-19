@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Татарский бизнес</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<header>
+    <div class="container">
+        <img src="{% static 'images/logo.png' %}" alt="Логотип сайта">
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#">О нас</a>
+            <a href="#">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+{% block content %}
+{% endblock %}
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Каталог татарских предприятий. Все права защищены.</p>
+    </div>
+</footer>
+</html>
