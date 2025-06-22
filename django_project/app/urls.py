@@ -6,6 +6,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('home', views.home, name='home'),
     path('about', views.about, name='about'),
-    path('company/<company_id:int>', views.company, name='company'),
-    path('enterpreneur/<person_id:int>', views.enterpreneur, name='enterpreneur'),
+    path('company/<int:company_id>', views.MainPageView.as_view(), name='company'),
+    path('enterpreneur/<int:person_id>', views.enterpreneur, name='enterpreneur'),
 ]
