@@ -11,8 +11,8 @@
     <div class="container">
         <img src="{% static 'images/logo.png' %}" alt="Логотип сайта">
         <nav>
-            <a href="#">Главная</a>
-            <a href="#">О нас</a>
+            <a href="{% url 'home' %}">Главная</a>
+            <a href="{% url 'about' %}">О нас</a>
             <a href="#">Контакты</a>
         </nav>
     </div>

@@ -11,7 +11,7 @@
         <div class="enterprise-list">
             <!-- Блок предприятия -->
             {% for comp in companies %}
-            <div class="enterprise-card">
+            <div class="enterprise-card" onclick="redirect('{{ comp.get_absolute_url }}')">
                 <h2>{{ comp.name }}</h2>
                 <p><strong>ФИО предпринимателя:</strong> {{ comp.enterpreneur.name }}</p>
                 <p><strong>Сфера деятельности:</strong> {{ comp.field }}</p>
@@ -26,4 +26,5 @@
 
 </div>
 
+<script src="{% static 'js/script.js'%}"></script>
 {% endblock %}
