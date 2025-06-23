@@ -48,7 +48,7 @@ class CompanyView(DetailView):
         return context
 
     def get_object(self, queryset=None):
-        return self.get_queryset().get(pk=self.kwargs['company_id'])
+        return self.get_queryset().get(slug=self.kwargs['company_slug'])
 
 
 class EnterpreneurView(DetailView):
