@@ -6,3 +6,7 @@ function redirect(url)
 function new_page(url) {
     window.open(url);
 }
+
+function show_popup() {
+
+}

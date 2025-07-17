@@ -5,26 +5,25 @@
 -->
 {% block content %}
 
-<body>
-    <div class="container">
-        <h1>Каталог татарских предприятий</h1>
-        <div class="enterprise-list">
-            <!-- Блок предприятия -->
-            {% for comp in companies %}
-            <div class="enterprise-card" onclick="redirect('{{ comp.get_absolute_url }}')">
-                <h2>{{ comp.name }}</h2>
-                <p><strong>ФИО предпринимателя:</strong> {{ comp.enterpreneur.name }}</p>
-                <p><strong>Сфера деятельности:</strong> {{ comp.field }}</p>
-                <a href="{{ comp.twogislink }}"  target="_blank"> Страница в 2ГИС</a>
-            </div>
-            {% endfor %}
+<div class="container">
+    <h1>Каталог татарских предприятий</h1>
+    <div class="enterprise-list">
+        <!-- Блок предприятия -->
+        {% for comp in companies %}
+        <div class="enterprise-card" onclick="redirect('{{ comp.get_absolute_url }}')">
+            <h2>{{ comp.name }}</h2>
+            <p><strong>ФИО предпринимателя:</strong> {{ comp.enterpreneur.name }}</p>
+            <p><strong>Сфера деятельности:</strong> {{ comp.field }}</p>
+            <p><strong>Город:</strong> {{ comp.city }}</p>
+            <button class="twogis-button" onclick="new_page('{{ comp.twogislink }}')">Страница в 2ГИС</button>
         </div>
+        {% endfor %}
     </div>
-</body>
-
-<div class="pop-up">
-
 </div>
 
-<script src="{% static 'js/script.js'%}"></script>
+<div class="pop-up">
+    <div class="pop-up-content">
+
+    </div>
+</div>
 {% endblock %}

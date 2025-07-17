@@ -4,16 +4,13 @@
         Страница компании
 -->
 {% block content %}
-<script src="{% static 'js/script.js' %}"></script>
-<body>
-    <div class="container">
-        <h2>{{ company.name }}</h2>
-        <p>Сфера: {{ company.field }}</p>
-        <p>Город: {{ company.city }}</p>
-        <p><a href="{{ company.enterpreneur.get_absolute_url }}">{{ company.enterpreneur.name }}</a></p>
-        <button class="twogis-button" onclick="new_page('{{ company.twogislink }}')">Ссылка на 2ГИС</button>
-        <img src="https://static.maps.2gis.com/1.0?s=880x250&c=55.75717,49.12963&z=17" alt="карта">
-    </div>
-</body>
+<div class="container">
+    <h2>{{ company.name }}</h2>
+    <p>Сфера: {{ company.field }}</p>
+    <p>Город: {{ company.city }}</p>
+    <p><a href="{{ company.enterpreneur.get_absolute_url }}">{{ company.enterpreneur.name }}</a></p>
+    <button class="twogis-button" onclick="new_page('{{ company.twogislink }}')">Ссылка на 2ГИС</button>
+    <img src="https://static.maps.2gis.com/1.0?s=880x250&c=55.75717,49.12963&z=17" alt="карта">
+</div>
 
 {% endblock %}
