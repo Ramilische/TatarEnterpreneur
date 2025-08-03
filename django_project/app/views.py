@@ -24,7 +24,7 @@ class MainPageView(ListView):
         return context
 
     def get_queryset(self):
-        queryset = Company.objects.all()
+        queryset = Company.objects.order_by('-updated_at')[:self.paginate_by]
         return queryset
 
 
@@ -59,6 +59,7 @@ class EnterpreneurView(DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = context['enterpreneur'].name
+        context['companies'] = Company.objects.filter(enterpreneur=context['enterpreneur'])
         return context
 
     def get_object(self, queryset=None):

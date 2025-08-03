@@ -28,6 +28,9 @@ class Company(models.Model):
     city = models.CharField(max_length=100)
     twogislink = models.CharField(max_length=255, null=True, blank=True)
     enterpreneur = models.ForeignKey('Enterpreneur', on_delete=models.PROTECT)
+    photoname = models.CharField(max_length=255, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
         return reverse('company', kwargs={'company_slug': self.slug})
@@ -48,6 +51,8 @@ class Company(models.Model):
 
 class Enterpreneur(models.Model):
     name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
         return reverse('enterpreneur', kwargs={'person_id': self.pk})

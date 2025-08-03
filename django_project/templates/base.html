@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
 <header>
     <div class="container">
-        <img src="{% static 'images/logo.png' %}" alt="Логотип сайта">
+        <img src="{% static 'images/logo_notext.png' %}" alt="Логотип сайта" class="logo">
         <nav>
             <a href="{% url 'home' %}">Главная</a>
             <a href="{% url 'about' %}">О нас</a>

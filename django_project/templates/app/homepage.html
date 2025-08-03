@@ -10,19 +10,33 @@
     <div class="enterprise-list">
         <!-- Блок предприятия -->
         {% for comp in companies %}
-        <div class="enterprise-card" onclick="redirect('{{ comp.get_absolute_url }}')">
+        <div class="enterprise-card">
             <h2>{{ comp.name }}</h2>
-            <p><strong>ФИО предпринимателя:</strong> {{ comp.enterpreneur.name }}</p>
-            <p><strong>Сфера деятельности:</strong> {{ comp.field }}</p>
+            <p><strong>Сфера:</strong> {{ comp.field }}</p>
             <p><strong>Город:</strong> {{ comp.city }}</p>
-            <button class="twogis-button" onclick="new_page('{{ comp.twogislink }}')">Страница в 2ГИС</button>
+            <button class="twogis-button" id="open-popup" onclick="show_popup('{{comp.name}}', '{{comp.enterpreneur.name}}', '{{comp.field}}', '{{comp.city}}', '{{comp.twogislink}}', '{{comp.photoname}}')">Подробнее</button>
         </div>
         {% endfor %}
     </div>
 </div>
 
-<div class="pop-up">
-    <div class="pop-up-content">
+<div class="pop-up" id="popup">
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="photo-block">
+            <img src="" alt="" id="popup-photo">
+        </div>
+        <div class="main-content">
+            <h2 id="popup-name"></h2>
+            <p id="popup-fio"><strong>Владелец:</strong></p>
+            <p id="popup-sphere"><strong>Сфера:</strong></p>
+            <p id="popup-city"><strong>Город:</strong> </p>
+
+            <div class="controls">
+                <button class="twogis-button" id="popup-link">Страница в 2ГИС</button>
+                <button class="close-btn">Закрыть</button>
+            </div>
+        </div>
 
     </div>
 </div>

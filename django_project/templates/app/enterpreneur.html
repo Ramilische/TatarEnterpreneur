@@ -3,10 +3,30 @@
 <!--
         Страница предпринимателя
 -->
+
 {% block content %}
-<body>
-    <div class="container">
-        {{ enterpreneur.name }}
+
+<div class="container">
+    <h1>Страница предпринимателя</h1>
+    <p>{{  enterpreneur.name  }}</p>
+    <div class="enterprise-list">
+        <!-- Блок предприятия -->
+        {% for comp in companies %}
+        <div class="enterprise-card" onclick="redirect('{{ comp.get_absolute_url }}')">
+            <h2>{{ comp.name }}</h2>
+            <p><strong>ФИО предпринимателя:</strong> {{ comp.enterpreneur.name }}</p>
+            <p><strong>Сфера деятельности:</strong> {{ comp.field }}</p>
+            <p><strong>Город:</strong> {{ comp.city }}</p>
+            <button class="twogis-button" onclick="new_page('{{ comp.twogislink }}')">Страница в 2ГИС</button>
+        </div>
+        {% endfor %}
     </div>
-</body>
+</div>
+
+<div class="pop-up">
+    <div class="pop-up-content">
+
+    </div>
+</div>
+
 {% endblock %}
