@@ -6,7 +6,9 @@
 }
 
 body {
+    min-height: 100vh;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -59,7 +61,8 @@ div img {
 
 /* Стили для main */
 main {
-    padding: 20px 0;
+    padding: 0;
+    margin: 0;
     flex: 1;
 }
 
@@ -179,7 +182,8 @@ footer {
 }
 
 .pop-up .content .photo-block {
-    height: 100%;
+    opacity: 0;
+    height: 0;
     max-width: 100%;
     max-height: 40vh;
     display: flex;
@@ -241,3 +245,7 @@ footer {
     opacity: 1;
 }
 
+.pop-up .content .photo-block.active {
+    opacity: 1;
+    height: 100%;
+}

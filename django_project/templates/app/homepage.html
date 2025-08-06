@@ -5,7 +5,7 @@
 -->
 {% block content %}
 
-<div class="container">
+<div class="container" >
     <h1>Каталог татарских предприятий</h1>
     <div class="enterprise-list">
         <!-- Блок предприятия -->
@@ -13,8 +13,13 @@
         <div class="enterprise-card">
             <h2>{{ comp.name }}</h2>
             <p><strong>Сфера:</strong> {{ comp.field }}</p>
-            <p><strong>Город:</strong> {{ comp.city }}</p>
-            <button class="twogis-button" id="open-popup" onclick="show_popup('{{comp.name}}', '{{comp.enterpreneur.name}}', '{{comp.field}}', '{{comp.city}}', '{{comp.twogislink}}', '{{comp.photoname}}')">Подробнее</button>
+            <p><strong>Город:</strong> {{ comp.city.name }}</p>
+            <button class="twogis-button" id="open-popup" onclick="show_popup('{{comp.name}}',
+            '{{comp.enterpreneur.surname}} {{comp.enterpreneur.name}} {{comp.enterpreneur.fathername}}',
+            '{{comp.field}}',
+            '{{comp.city.name}}',
+            '{{comp.twogislink}}',
+            '{{comp.photoname}}')">Подробнее</button>
         </div>
         {% endfor %}
     </div>

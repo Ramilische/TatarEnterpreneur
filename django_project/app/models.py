@@ -21,16 +21,24 @@ def create_slug(text):
     return slug
 
 
+class City(models.Model):
+    name = models.CharField(max_length=100)
+    country = models.CharField(max_length=100, default='Россия', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
 class Company(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, blank=True)
     field = models.CharField(max_length=255)
-    city = models.CharField(max_length=100)
-    twogislink = models.CharField(max_length=255, null=True, blank=True)
+    city = models.ForeignKey('City', on_delete=models.PROTECT)
+    twogislink = models.CharField(max_length=255, blank=True, default='')
     enterpreneur = models.ForeignKey('Enterpreneur', on_delete=models.PROTECT)
-    photoname = models.CharField(max_length=255, null=True, blank=True)
+    photoname = models.CharField(max_length=255, blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    is_published = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse('company', kwargs={'company_slug': self.slug})
@@ -44,13 +52,16 @@ class Company(models.Model):
         self.slug = slug
         super().save(**kwargs)
 
-
     def __str__(self):
         return self.name
 
 
 class Enterpreneur(models.Model):
     name = models.CharField(max_length=255)
+    surname = models.CharField(max_length=255, blank=True, default='')
+    fathername = models.CharField(max_length=255, blank=True, default='')
+    phone = models.CharField(max_length=255, null=True, default='')
+    email = models.CharField(max_length=255, null=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -58,4 +69,4 @@ class Enterpreneur(models.Model):
         return reverse('enterpreneur', kwargs={'person_id': self.pk})
 
     def __str__(self):
-        return self.name
+        return f'{self.surname} {self.name} {self.fathername}: {self.phone}, {self.email}'

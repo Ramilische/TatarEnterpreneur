@@ -9,13 +9,18 @@ function new_page(url) {
 
 function show_popup(name, fio, sphere, city, link, photoname) {
     let popupNode = document.querySelector('#popup');
+    let popupPhotoNode = document.querySelector('.photo-block')
     let overlay = popupNode.querySelector('.overlay');
     let closebtn = popupNode.querySelector('.close-btn');
     function  openPopup() {
         popupNode.classList.add('active');
-        let pathtophoto = "/static/images/" + photoname
-        console.log(pathtophoto)
-        document.getElementById('popup-photo').src=pathtophoto;
+        console.log(photoname)
+        if (photoname != '' ) {
+            popupPhotoNode.classList.add('active');
+            let pathtophoto = "/static/images/" + photoname;
+            document.getElementById('popup-photo').src=pathtophoto;
+            console.log(pathtophoto)
+        }
         document.getElementById('popup-name').innerHTML=name;
         document.getElementById('popup-fio').innerHTML='<strong>Владелец:</strong> '+fio;
         document.getElementById('popup-sphere').innerHTML='<strong>Сфера:</strong> '+sphere;
@@ -24,6 +29,7 @@ function show_popup(name, fio, sphere, city, link, photoname) {
     }
     function closePopup() {
         popupNode.classList.remove('active');
+        popupPhotoNode.classList.remove('active')
     }
     overlay.addEventListener('click', closePopup);
     closebtn.addEventListener('click', closePopup);

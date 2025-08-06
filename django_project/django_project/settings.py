@@ -28,8 +28,7 @@ SECRET_KEY = json.load(open(BASE_DIR / 'data/info.json'))['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', ]
-
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', 'kartatatar.ru', 'www.kartatatar.ru']
 
 # Application definition
 
